@@ -1,6 +1,6 @@
 "use client";
 
-import { Location, Trip } from "@/app/generated/prisma";
+import { Location, Trip } from "@/app/generated/prisma/browser";
 import Image from "next/image";
 import { Calendar, MapPin, Plus } from "lucide-react";
 import Link from "next/link";
@@ -10,8 +10,10 @@ import { useState } from "react";
 import Map from "@/components/map";
 import SortableItinerary from "./sortable-itinerary";
 
-export type TripWithLocation = Trip & {
+export type TripWithLocation = Omit<Trip, "startDate" | "endDate"> & {
   locations: Location[];
+  startDate: string;
+  endDate: string;
 };
 
 interface TripDetailClientProps {
