@@ -8,7 +8,6 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  outputFileTracing: true,
   outputFileTracingIncludes: {
     "app/api/**/*": [
       "./app/generated/prisma/**/*",
