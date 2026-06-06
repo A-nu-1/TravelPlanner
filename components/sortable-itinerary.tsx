@@ -1,4 +1,4 @@
-import { Location } from "../app/generated/prisma/browser";
+import type { Location } from "../app/generated/prisma";
 import { reorderItinerary } from "@/lib/actions/reorder-itineraty";
 import { DndContext, closestCenter, DragEndEvent } from "@dnd-kit/core";
 import {

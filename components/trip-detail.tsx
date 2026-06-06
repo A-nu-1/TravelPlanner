@@ -1,6 +1,6 @@
 "use client";
 
-import { Location, Trip } from "../app/generated/prisma/browser";
+import type { Location, Trip } from "../app/generated/prisma";
 import Image from "next/image";
 import { Calendar, MapPin, Plus } from "lucide-react";
 import Link from "next/link";
