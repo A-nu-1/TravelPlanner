@@ -9,6 +9,13 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  outputFileTracingIncludes: {
+    "/api/**/*": [
+      "./app/generated/prisma/**/*",
+      "./node_modules/.prisma/client/**/*",
+      "./node_modules/@prisma/client/runtime/**/*",
+    ],
+  },
 };
 
 export default nextConfig;
