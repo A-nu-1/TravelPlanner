@@ -3,7 +3,11 @@
   "installCommand": "npm install",
   "outputDirectory": ".next",
   "env": {
-    "PRISMA_SKIP_ENGINE_CHECK": "true"
+    "PRISMA_SKIP_ENGINE_CHECK": "false"
   },
+  "includeFiles": [
+    "app/generated/prisma/**",
+    ".prisma/client/**"
+  ],
   "regions": ["iad1"]
 }
