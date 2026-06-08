@@ -12,20 +12,20 @@ export default async function LandingPage() {
       {/* Main Content */}
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="relative bg-gradient-to-b from-white to-blue-50 py-20 md:py-32">
+        <section className="relative bg-gradient-to-b from-pink-100 to-purple-200 py-24 md:py-32">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
-              <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                Plan your perfect trip, every time
+              <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6 bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent py-2">
+                Plan like a Pro, Lets go!
               </h1>
-              <p className="text-xl md:text-2xl text-gray-600 mb-8">
-                Create itineraries, organize destinations, and share your travel
+              <p className="text-xl md:text-2xl text-gray-500 mb-8">
+                Create itineraries, organize destinations, and store your travel
                 plans all in one place.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <AuthButton
                   isLoggedIn={isLoggedIn}
-                  className="w-full sm:w-auto bg-black text-white hover:bg-gray-800 px-6 py-3 rounded-lg transition-colors duration-200 flex items-center justify-center"
+                  className="w-full sm:w-auto bg-gradient-to-r from-blue-500 to-pink-500 hover:from-blue-600 hover:to-pink-600  text-white px-6 py-3 rounded-lg transition-colors duration-200 flex items-center justify-center"
                 >
                   {isLoggedIn ? (
                     "Check it Out"
@@ -43,25 +43,73 @@ export default async function LandingPage() {
                     </>
                   )}
                 </AuthButton>
+                
               </div>
             </div>
           </div>
-          {/* Decorative Clipped Background at the Bottom */}
+          {/* Decorative Clipped Background at the Bottom 
           <div
             className="absolute bottom-0 left-0 right-0 h-24 bg-white"
             style={{ clipPath: "polygon(0 100%, 100% 100%, 100% 0, 0 100%)" }}
-          />
+          />*/}
+                    {/* Moving SVG Wave Divider */}
+          <div className="absolute bottom-0 left-0 w-full overflow-hidden h-[60px] md:h-[120px] pointer-events-none">
+            {/* Injecting pure CSS animations natively inside the component */}
+            <style>{`
+              @keyframes move-wave-front {
+                0% { transform: translate3d(0, 0, 0); }
+                50% { transform: translate3d(-25%, 2px, 0); }
+                100% { transform: translate3d(-50%, 0, 0); }
+              }
+              @keyframes move-wave-back {
+                0% { transform: translate3d(-50%, 0, 0); }
+                50% { transform: translate3d(-25%, -3px, 0); }
+                100% { transform: translate3d(0, 0, 0); }
+              }
+              .animate-wave-front {
+                animation: move-wave-front 12s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+              }
+              .animate-wave-back {
+                animation: move-wave-back 16s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+              }
+            `}</style>
+
+            <svg 
+              className="absolute bottom-0 w-[200%] h-full min-w-[2400px]" 
+              viewBox="0 0 2400 120" 
+              preserveAspectRatio="none" 
+              xmlns="http://w3.org"
+            >
+              {/* Back Wave Layer (Slower, translucent opacity for 3D depth) */}
+              <path 
+                className="animate-wave-back"
+                d="M0,60 C300,30 600,90 900,60 C1200,30 1500,90 1800,60 C2100,30 2400,90 2700,60 V120 H0 Z" 
+                fill="#ffffff"
+                opacity="0.4"
+              />
+              
+              {/* Front Wave Layer (Faster, crisp solid white matching the next section) */}
+              <path 
+                className="animate-wave-front"
+                d="M0,60 C300,90 600,30 900,60 C1200,90 1500,30 1800,60 C2100,90 2400,30 2700,60 V120 H0 Z" 
+                fill="#ffffff"
+              />
+            </svg>
+          </div>
+
         </section>
 
         {/* Features Section */}
         <section className="py-16 md:py-24 bg-white">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center mb-12">
-              Plan with confidence
+            <h2 className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
+              Plan with Love, travel with Anu
             </h2>
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="p-6 rounded-lg border border-gray-100 shadow-sm bg-white">
-                <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mb-4">
+            <div className="grid md:grid-cols-3 gap-8 [perspective:1000px]">
+              <div className="p-6 rounded-lg border border-gray-100 shadow-sm bg-gradient-to-r from-pink-100 to-purple-100 transition-all duration-500 ease-out [transform-style:preserve-3d]
+                  hover:shadow-xl
+                  hover:[transform:rotateX(10deg)_rotateY(-10deg)_translateZ(10px)]">
+                <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mb-4 [transform:translateZ(20px)]">
                   <MapIcon className="h-6 w-6 text-primary" />
                 </div>
                 <h3 className="text-xl font-semibold mb-2">Interactive Maps</h3>
@@ -70,8 +118,10 @@ export default async function LandingPage() {
                   itinerary at a glance.
                 </p>
               </div>
-              <div className="p-6 rounded-lg border border-gray-100 shadow-sm bg-white">
-                <div className="w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center mb-4">
+              <div className="p-6 rounded-lg border border-gray-100 shadow-sm bg-gradient-to-r from-pink-100 to-purple-100 transition-all duration-500 ease-out [transform-style:preserve-3d]
+                  hover:shadow-xl
+                  hover:[transform:rotateX(10deg)_rotateY(-10deg)_translateZ(10px)]">
+                <div className="w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center mb-4 [transform:translateZ(20px)]">
                   <svg
                     className="h-6 w-6 text-travel-amber"
                     viewBox="0 0 24 24"
@@ -90,8 +140,10 @@ export default async function LandingPage() {
                   structured planning.
                 </p>
               </div>
-              <div className="p-6 rounded-lg border border-gray-100 shadow-sm bg-white">
-                <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center mb-4">
+              <div className="p-6 rounded-lg border border-gray-100 shadow-sm bg-gradient-to-r from-pink-100 to-purple-100 transition-all duration-500 ease-out [transform-style:preserve-3d]
+                  hover:shadow-xl
+                  hover:[transform:rotateX(10deg)_rotateY(-10deg)_translateZ(10px)]">
+                <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center mb-4 [transform:translateZ(20px)]">
                   <svg
                     className="h-6 w-6 text-green-500"
                     viewBox="0 0 24 24"
@@ -116,18 +168,18 @@ export default async function LandingPage() {
         </section>
 
         {/* Call to Action Section */}
-        <section className="py-16 md:py-24 bg-gray-800">
+        <section className="py-16 md:py-24 bg-gradient-to-r from-pink-100 to-purple-100">
           <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent mb-6">
               Ready to plan your next adventure?
             </h2>
-            <p className="text-xl text-blue-50 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-500 mb-8 max-w-2xl mx-auto">
               Join thousands of travelers who plan better trips with
               TripPlanner.
             </p>
             <AuthButton
               isLoggedIn={isLoggedIn}
-              className="inline-block bg-white text-gray-800 hover:bg-blue-50 px-6 py-3 rounded-lg transition-colors duration-200"
+              className="inline-block bg-gradient-to-r from-blue-500 to-pink-500 hover:from-blue-600 hover:to-pink-600  text-white px-6 py-3 rounded-lg transition-colors duration-200"
             >
               {isLoggedIn ? "Check it out" : "Sign Up Now"}
             </AuthButton>
